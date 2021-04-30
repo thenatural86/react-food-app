@@ -13,7 +13,7 @@ const Cart = ({ cartIsShown, toggleCart }) => {
 
   if (cartIsShown) {
     return (
-      <Modal>
+      <Modal toggleCart={toggleCart}>
         {cartItems}
         <div className={classes.total}>
           <span>Total Amount</span>
