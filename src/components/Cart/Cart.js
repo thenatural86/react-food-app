@@ -6,16 +6,16 @@ import CartItem from './CartItem'
 import classes from './Cart.module.css'
 
 const Cart = ({ cartIsShown, toggleCart }) => {
-  let { items, totalAmount } = useContext(CartContext)
+  let { items, totalAmount, addItem, removeItem } = useContext(CartContext)
 
   totalAmount = totalAmount.toFixed(2)
   const hasItems = items.length > 0
 
   const cartItemRemove = (id) => {
-    console.log(id)
+    removeItem(id)
   }
   const cartItemAdd = (item) => {
-    console.log(item)
+    addItem({ ...item, amount: 1 })
   }
 
   const cartItems = (
@@ -25,7 +25,7 @@ const Cart = ({ cartIsShown, toggleCart }) => {
           key={item.id}
           id={item.id}
           name={item.name}
-          amount={item.name}
+          amount={item.amount}
           price={item.price}
           onRemove={cartItemRemove.bind(null, item.id)}
           onAdd={cartItemAdd.bind(null, item)}
