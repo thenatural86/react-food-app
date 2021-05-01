@@ -9,10 +9,10 @@ const defaultCartState = {
 
 const cartReducer = (state, action) => {
   if (action.type === 'ADD') {
-    const updatedState = [...state.items, action.payload.item]
+    const updatedItems = [...state.items, action.payload]
     const updatedTotalAmount =
       state.totalAmount + action.payload.amount * action.payload.price
-    return { ...state, items: updatedState, totalAmount: updatedTotalAmount }
+    return { ...state, items: updatedItems, totalAmount: updatedTotalAmount }
   }
   return defaultCartState
 }
